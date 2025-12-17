@@ -1,9 +1,12 @@
+import mascotasModel from '../models/mascotas.js';
+
 class mascotasController {
   constructor () {}
 
   async create (req, res) {
     try {
-      res.status(201).json({ status: 'create-ok' });
+      const data = await mascotasModel.create(req.body);
+      res.status(201).json(data);
     } catch (error) {
       res.status(500).send(error);
     }
